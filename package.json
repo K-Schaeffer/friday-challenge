@@ -5,7 +5,8 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preview": "nx graph"
   },
   "config": {
     "commitizen": {
@@ -17,5 +18,9 @@
     "cz-conventional-changelog": "^3.3.0",
     "lerna": "^6.4.1",
     "husky": "^8.0.0"
+  },
+  "engines": {
+    "node": "18.x",
+    "yarn": "1.x"
   }
 }
