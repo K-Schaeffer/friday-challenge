@@ -11,6 +11,7 @@ export const typeDefs = `#graphql
 
   type Query {
     accounts: [Account!]!
+    account(id: String!): Account!
   }
 `;
 
@@ -19,5 +20,10 @@ export const resolvers = {
     accounts: () => {
       return prisma.account.findMany();
     },
-  },
+    account: (_, { id }) => {
+      return prisma.account.findUnique({
+        where: { id },
+      });
+    },
+  }
 };
