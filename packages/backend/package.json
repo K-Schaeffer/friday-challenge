@@ -12,7 +12,7 @@
   "scripts": {
     "preview": "prisma studio",
     "migrate": "prisma migrate dev --name",
-    "seed": "ts-node ./prisma/index.ts",
+    "seed": "ts-node --experimental-specifier-resolution=node ./prisma/index.ts",
     "compile": "tsc",
     "start": "npm run compile && node ./dist/src/index.js"
   },
