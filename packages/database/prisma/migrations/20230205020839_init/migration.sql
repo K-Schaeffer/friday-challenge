@@ -3,6 +3,8 @@ CREATE TABLE "Account" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "bank" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
 
     CONSTRAINT "Account_pkey" PRIMARY KEY ("id")
 );
@@ -12,6 +14,8 @@ CREATE TABLE "Category" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "color" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
 
     CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
 );
@@ -22,9 +26,11 @@ CREATE TABLE "Transaction" (
     "accountId" TEXT NOT NULL,
     "categoryId" TEXT NOT NULL,
     "reference" TEXT,
-    "amount" DOUBLE PRECISION,
-    "currency" TEXT,
+    "amount" DOUBLE PRECISION NOT NULL,
+    "currency" TEXT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
 
     CONSTRAINT "Transaction_pkey" PRIMARY KEY ("id")
 );
