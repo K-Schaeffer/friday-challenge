@@ -1,7 +1,8 @@
-version: '3'
+version: '2'
 
 services:
   postgres:
+    container_name: friday-challenge-database
     image: postgres:13.1
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
@@ -10,10 +11,10 @@ services:
       retries: 10
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=pgsql
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgpass
+      - POSTGRES_DB=pgdb
     volumes:
-      - ./pgsql:/var/lib/postgresql/data
+       - ./private:/var/lib/postgresql/data
     ports:
       - 5432:5432
