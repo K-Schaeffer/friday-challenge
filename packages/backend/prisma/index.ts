@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { context } from "../src/context";
 
 import { getAllSeeds, Seed } from './seeds'
 
-const prisma = new PrismaClient();
+const { prisma } = context
 
 async function populateAllDatabase({ accounts, categories, transactions }: Seed) {
   const populateAccounts = prisma.account.createMany({

@@ -1,5 +1,5 @@
-const { parse } = require("csv-parse");
+import { parse } from "csv-parse";
 
-export function parseCSV (): any {
-  return parse({ delimiter: ",", from_line: 2, relax_quotes: true })
+export function parseCSV(): any {
+  return parse({ delimiter: ",", from_line: 2, relax_quotes: true });
 }
