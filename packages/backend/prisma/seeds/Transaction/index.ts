@@ -21,22 +21,17 @@ export function getTransactions() {
       .pipe(parseCSV())
       .on("data", function (row: Array<string>) {
         const [id, accountId, categoryId, reference, amount, currency, date] = row;
-        
-        // Category will not be nullable, but as we have records lacking this 
-        // information, we need to check it before pushing
-
-        // Main reason to not include nullability to category is the error that prisma throws when it tries to create the FKs
-        if (categoryId) { 
+      
+          // FIXME: FK error.
           data.push({
             id,
             accountId,
-            categoryId,
+            categoryId: categoryId || '', // Workaround to type error on createMany.
             reference,
             amount: parseFloat(amount),
             currency: currency,
             date: new Date(date).toISOString()
           });
-        }
       })
       .on("end", () => resolve(data))
       .on("error", function (error: Error) {
