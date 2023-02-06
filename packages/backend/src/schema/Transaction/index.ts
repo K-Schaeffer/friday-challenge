@@ -20,7 +20,7 @@ export const typeDefs = `#graphql
   }
 
   type Mutation {
-    editTransactionCategory(id: String!, categoryId: String!): Transaction!
+    updateTransactionCategory(id: String!, categoryId: String!): Transaction!
   }
 
   scalar DateTime
@@ -49,7 +49,7 @@ export const resolvers = {
     },
   },
   Mutation: {
-    editTransactionCategory: (_, { id, categoryId }) => {
+    updateTransactionCategory: (_, { id, categoryId }) => {
       return prisma.transaction.update({
         where: { id },
         data: {

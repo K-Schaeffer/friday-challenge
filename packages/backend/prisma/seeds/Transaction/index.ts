@@ -24,6 +24,8 @@ export function getTransactions() {
         
         // Category will not be nullable, but as we have records lacking this 
         // information, we need to check it before pushing
+
+        // Main reason to not include nullability to category is the error that prisma throws when it tries to create the FKs
         if (categoryId) { 
           data.push({
             id,
