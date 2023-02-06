@@ -15,7 +15,12 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    transactions: [Transaction!]!
+    transactions(limit: Int, offset: Int): [Transaction!]!
+    transaction(id: String!): Transaction!
+  }
+
+  type Mutation {
+    editTransactionCategory(id: String!, categoryId: String!): Transaction!
   }
 
   scalar DateTime
@@ -23,16 +28,39 @@ export const typeDefs = `#graphql
 
 export const resolvers = {
   Query: {
-    // Show list of transactions (We should have a pagination here, as we have lots of data available)
-    transactions: () => {
+    transactions: (_, { limit, offset }) => {
       return prisma.transaction.findMany({
+        skip: offset,
+        take: limit,
         include: {
           account: true,
           category: true,
         },
       });
     },
-    // TODO: We should have anoter query to either search for transactions or filter them, it also needs pagination
+    transaction: (_, { id }) => {
+      return prisma.transaction.findUnique({
+        where: { id },
+        include: {
+          account: true,
+          category: true,
+        },
+      });
+    },
+  },
+  Mutation: {
+    editTransactionCategory: (_, { id, categoryId }) => {
+      return prisma.transaction.update({
+        where: { id },
+        data: {
+          categoryId,
+        },
+        include: {
+          account: true,
+          category: true,
+        },
+      });
+    },
   },
   DateTime: DateTimeResolver,
 };
