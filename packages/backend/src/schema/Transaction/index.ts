@@ -15,7 +15,7 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    transactions: [Transaction!]!
+    transactions(limit: Int, offset: Int): [Transaction!]!
   }
 
   scalar DateTime
@@ -23,9 +23,10 @@ export const typeDefs = `#graphql
 
 export const resolvers = {
   Query: {
-    // Show list of transactions (We should have a pagination here, as we have lots of data available)
-    transactions: () => {
+    transactions: (_, { limit, offset }) => {
       return prisma.transaction.findMany({
+        skip: offset,
+        take: limit,
         include: {
           account: true,
           category: true,
