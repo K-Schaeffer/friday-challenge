@@ -7,7 +7,7 @@
   "author": "Kauan Schaeffer <kcb.schaeffer@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/K-Schaeffer/friday-challenge/tree/main/packages/backend"
   },
   "scripts": {
     "preview": "prisma studio",
