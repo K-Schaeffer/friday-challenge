@@ -13,6 +13,7 @@
     "preview": "prisma studio",
     "migrate": "prisma migrate dev --name",
     "seed": "ts-node ./prisma/index.ts",
+    "prepare": "npm run migrate init && npm run seed",
     "compile": "tsc",
     "start": "npm run compile && ts-node ./dist/src/index.js"
   },

@@ -12,6 +12,8 @@
   ],
   "scripts": {
     "prepare": "husky install",
+    "prepare:backend": "lerna run prepare",
+    "start:backend": "lerna run start",
     "preview": "nx graph"
   },
   "config": {
