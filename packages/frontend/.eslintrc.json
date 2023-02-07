@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": [
+    "@nuxtjs/eslint-config", 
+    "plugin:prettier/recommended",
+    "plugin:vitest-globals/recommended"
+  ],
+  "env": {
+    "vitest-globals/env": true
+  }
+}
