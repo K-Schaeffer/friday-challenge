@@ -1,3 +1,7 @@
 <template>
-  <div class="font-mono">Hello there!</div>
+  <div class="w-screen h-screen font-mono bg-stone-200 py-5">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
