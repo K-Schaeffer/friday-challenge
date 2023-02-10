@@ -1,0 +1,19 @@
+query Query($limit: Int, $offset: Int) {
+  transactions(limit: $limit, offset: $offset) {
+    id
+    account {
+      id
+      name
+      bank
+    }
+    reference
+    category {
+      id
+      name
+      color
+    }
+    date
+    amount
+    currency
+  }
+}
