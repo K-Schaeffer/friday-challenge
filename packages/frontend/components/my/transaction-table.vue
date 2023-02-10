@@ -19,7 +19,6 @@
                 width="14"
                 class="stroke-zinc-400 stroke-2 ml-2"
               />
-              <!-- :class="{ 'ml-2': cell.isSorting === 'ASC' }" -->
               <icon-arrow-down-outlined
                 :class="{ 'stroke-zinc-600': cell.isSorting === 'ASC' }"
                 width="14"
@@ -33,24 +32,24 @@
 
     <tbody class="border-t-2">
       <tr
-        v-for="(row, rowIndex) in bodyRows"
-        :key="rowIndex"
+        v-for="row in bodyRows"
+        :key="row.id"
         class="hover:bg-slate-50 hover:cursor-pointer"
       >
-        <th
-          v-for="(cell, cellIndex) in row"
-          :key="cellIndex"
-          :class="{ 'text-zinc-600': cell.text !== 'No reference provided' }"
-          class="px-6 py-4 border-y border-zinc-200 whitespace-nowrap text-xs font-semibold text-zinc-400 text-left"
-        >
-          <div
-            class="inline rounded px-2 py-1"
-            :style="{ 'background-color': cell.color }"
-          >
-            {{ cell.text }}
-          </div>
-          <span class="text-zinc-400"> {{ cell.hint }} </span>
-        </th>
+        <my-transaction-table-body-cell :text="row.reference" />
+        <my-transaction-table-body-cell
+          :text="row.category.name"
+          :color="row.category.color"
+        />
+        <my-transaction-table-body-cell
+          :text="new Date(row.date).toLocaleDateString('us-US')"
+          class="w-0 text-center"
+        />
+        <my-transaction-table-body-cell
+          :text="new Intl.NumberFormat('us-US', {}).format(row.amount)"
+          :hint="row.currency"
+          class="w-0 text-right"
+        />
       </tr>
     </tbody>
   </table>
@@ -62,51 +61,11 @@ defineProps({
     type: Array,
     required: true,
   },
+  bodyRows: {
+    type: Array,
+    required: true,
+  },
 });
 
 const emit = defineEmits(["sort"]);
-
-const bodyRows = [
-  [
-    { text: "No reference provided" },
-    { text: "Foo" },
-    { text: "Foo" },
-    { text: "Foo" },
-  ],
-  [
-    { text: "No reference provided" },
-    { text: "Tax refund", color: "#FAFA" },
-    { text: "Foo" },
-    { text: "Foo", hint: "Foo" },
-  ],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-  [{ text: "Foo" }, { text: "Foo" }, { text: "Foo" }, { text: "Foo" }],
-];
 </script>
