@@ -5,7 +5,11 @@
     "plugin:prettier/recommended",
     "plugin:vitest-globals/recommended"
   ],
+  "plugins": [
+    "nuxt3-auto-import" // https://github.com/nuxt/eslint-plugin-nuxt/issues/173
+  ],
   "env": {
-    "vitest-globals/env": true
+    "vitest-globals/env": true,
+    "nuxt3-auto-import/nuxt": true
   }
 }

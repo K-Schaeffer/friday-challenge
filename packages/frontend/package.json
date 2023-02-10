@@ -30,6 +30,7 @@
     "@vitest/coverage-c8": "^0.28.4",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-nuxt3-auto-import": "git+https://github.com/LuckyWindsck/eslint-plugin-nuxt3-auto-import.git",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vitest-globals": "^1.2.0",
     "jsdom": "^21.1.0",
