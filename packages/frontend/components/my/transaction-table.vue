@@ -36,6 +36,8 @@
         :key="row.id"
         class="hover:bg-slate-50 hover:cursor-pointer"
       >
+        <my-transaction-table-body-cell :text="row.account.name" />
+        <my-transaction-table-body-cell :text="row.account.bank" />
         <my-transaction-table-body-cell :text="row.reference" />
         <my-transaction-table-body-cell
           :text="row.category.name"
