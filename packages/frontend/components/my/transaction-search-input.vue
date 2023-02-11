@@ -9,10 +9,11 @@
       <icon-magnify-outlined width="20" class="stroke-zinc-400 stroke-2 ml-2" />
       <input
         v-model="value"
+        :disabled="isDisabled"
         type="text"
         name="search"
         placeholder="Search by bank, account, reference, category, date, amount, currency..."
-        class="p-2 w-full text-md text-zinc-600 placeholder-zinc-400 focus:outline-none"
+        class="p-2 w-full text-md text-zinc-600 placeholder-zinc-400 focus:outline-none disabled:cursor-not-allowed"
       />
     </div>
   </div>
@@ -24,6 +25,7 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  isDisabled: Boolean,
 });
 
 const emit = defineEmits(["update:modelValue"]);
