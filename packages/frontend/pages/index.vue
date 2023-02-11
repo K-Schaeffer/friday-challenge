@@ -1,14 +1,14 @@
 <template>
   <div :class="{ 'animate-pulse opacity-10': isLoading }">
     <h1 class="text-zinc-900 font-bold pb-5">Transactions</h1>
-    <my-transaction-search-input class="pb-3" />
+    <my-transaction-search-input v-model="currentSearch" class="pb-3" />
     <div
-      class="block max-h-[75vh] overflow-hidden overflow-y-scroll"
+      class="block max-h-[75vh] overflow-hidden overflow-y-scroll overflow-x-scroll"
       @scroll="handleScroll"
     >
       <my-transaction-table
         :head-cells="headCells"
-        :body-rows="bodyRows"
+        :body-rows="currentBodyRows"
         @sort="handleSort"
       />
     </div>
@@ -16,7 +16,7 @@
       v-show="!isLoading"
       class="mt-2 flex justify-end items-end text-xs text-zinc-600 text-right"
     >
-      <span class="font-bold mr-1">{{ bodyRows.length }}</span>
+      <span class="font-bold mr-1">{{ currentBodyRows.length }}</span>
       transactions found
     </span>
   </div>
@@ -26,6 +26,8 @@
 import transactionsGql from "~/queries/transactions.gql";
 
 const headCells = reactive([
+  { text: "Account", id: "account" },
+  { text: "Bank", id: "bank" },
   { text: "Reference", id: "reference" },
   { text: "Category", id: "category" },
   { text: "Date", id: "date", isSortable: true, isSorting: "" },
@@ -36,6 +38,7 @@ const bodyRows = reactive([]);
 
 let currentQuery = reactive();
 
+const currentSearch = ref("");
 const isLoading = ref(true);
 
 onMounted(() => {
@@ -52,10 +55,32 @@ onMounted(() => {
   });
 });
 
+const currentBodyRows = computed(() => {
+  if (currentSearch.value.length === "") {
+    return bodyRows;
+  }
+
+  return bodyRows.filter((row) => {
+    const searchableValues = [
+      row.account.name.toLowerCase(),
+      row.account.bank.toLowerCase(),
+      row.reference.toLowerCase(),
+      row.category.name.toLowerCase(),
+      new Date(row.date).toLocaleDateString("us-US"),
+      new Intl.NumberFormat("us-US", {}).format(row.amount),
+      row.currency.toLowerCase(),
+    ];
+
+    return searchableValues.find((value) =>
+      value.includes(currentSearch.value.toLowerCase())
+    );
+  });
+});
+
 const handleScroll = (event) => {
   const { scrollTop, scrollTopMax } = event.target;
 
-  if (scrollTop < scrollTopMax) {
+  if (scrollTop < scrollTopMax || currentSearch.value.length) {
     return;
   }
 
