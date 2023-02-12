@@ -114,7 +114,7 @@ yarn install
 
 #### Start API
 
-Follow these [instructions](https://github.com/K-Schaeffer/friday-challenge/tree/main/packages/backend#readme)
+Follow this [instructions](https://github.com/K-Schaeffer/friday-challenge/tree/main/packages/backend#readme)
 
 #### Start Application
 
