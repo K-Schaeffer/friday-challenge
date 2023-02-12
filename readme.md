@@ -96,12 +96,12 @@ cd friday-challenge/
 #### Copy local enviroment files
 
 ```sh
-# friday-challenge/backend
+# friday-challenge/packages/backend
 cp .env.local .env
 ```
 
 ```sh
-# # friday-challenge/frontend
+# # friday-challenge/packages/frontend
 cp .env.local .env
 ```
 
