@@ -10,10 +10,11 @@
       <input
         v-model="value"
         :disabled="isDisabled"
+        :class="{ 'cursor-not-allowed': isDisabled }"
         type="text"
         name="search"
         placeholder="Search by bank, account, reference, category, date, amount, currency..."
-        class="p-2 w-full text-md text-zinc-600 placeholder-zinc-400 focus:outline-none disabled:cursor-not-allowed"
+        class="p-2 w-full text-md text-zinc-600 placeholder-zinc-400 focus:outline-none"
       />
     </div>
   </div>

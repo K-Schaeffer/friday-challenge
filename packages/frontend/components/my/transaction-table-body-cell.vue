@@ -1,6 +1,6 @@
 <template>
   <th
-    :class="{ 'text-zinc-600': text !== '' }"
+    :class="{ 'text-zinc-600': text }"
     class="px-6 py-4 border-y border-zinc-200 whitespace-nowrap text-xs font-semibold text-zinc-400 text-left"
   >
     <div

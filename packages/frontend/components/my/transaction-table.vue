@@ -35,6 +35,7 @@
         v-for="row in bodyRows"
         :key="row.id"
         class="hover:bg-slate-50 hover:cursor-pointer"
+        @click="() => emit('click:row', row.id)"
       >
         <my-transaction-table-body-cell :text="row.account.name" />
         <my-transaction-table-body-cell :text="row.account.bank" />
@@ -69,5 +70,5 @@ defineProps({
   },
 });
 
-const emit = defineEmits(["sort"]);
+const emit = defineEmits(["sort", "click:row"]);
 </script>
