@@ -16,13 +16,13 @@
 <!-- Index session-->
 <p align="center">
  <a href="#-overview">Overview</a> • 
- <a href="#-functionalities">Functionalities</a> • 
+ <a href="#%EF%B8%8F-functionalities">Functionalities</a> • 
  <a href="#-layout">Layout</a> • 
- <a href="#-running-the-project">Running it</a> • 
+ <a href="#-local-setup">Local Setup</a> • 
  <a href="#-technologies">Technologies</a>
 </p>
 
-<!--Overvoew session-->
+<!-- Overview session-->
 
 ## 👀 Overview
 
@@ -69,7 +69,7 @@ This monorepo contains a CRUD fullstack aplication developed in response to the 
 
 <!--Running session-->
 
-## 🚀 Running the project
+## 🚀 Local Setup
 
 ### Requirements
 
@@ -78,7 +78,9 @@ This monorepo contains a CRUD fullstack aplication developed in response to the 
 - Docker Engine 23.x
 - Docker Compose 2.x
 
-#### 🎲 Running it
+#### 🎲 Running
+
+If that's not the first time you're running, jump to <a href="####-quick-start">quick start</a>.
 
 ##### Clone this repository
 
@@ -92,20 +94,66 @@ git clone https://github.com/K-Schaeffer/friday-challenge.git
 cd friday-challenge/
 ```
 
+##### Copy local enviroment files
+
+```sh
+# Backend
+cd packages/backend && cp .env.local .env
+```
+
+```sh
+# Frontend
+cd ../frontend && cp .env.local .env
+```
+
+```sh
+# Go back to root directory
+cd ../../
+```
+
 ##### Install dependencies
 
 ```sh
 yarn install
 ```
 
-Follow the instructions of each project in the following order:
+##### Start API
 
-1. [Backend](/app/views)
-2. [Frontend](/app/public/assets/css/dropbox-clone.css)
+Follow these [instructions](https://github.com/K-Schaeffer/friday-challenge/tree/main/packages/backend#readme)
+
+##### Start Application
+
+```sh
+yarn start:frontend
+```
 
 With those steps you'll have a containerized PostgreSQL container running, an API running on port **4000** and the front-end application running on port **3000**.
 
-Open http://localhost:3000
+Open http://localhost:3000 and have fun :)
+
+---
+
+#### ⚡️ Quick start
+
+##### Start API
+
+Open a new terminal and run:
+
+```sh
+# friday-challenge/
+yarn start:backend
+```
+
+##### Start Application
+
+Open a new terminal and run:
+
+```sh
+# friday-challenge/
+yarn start:frontend
+```
+
+Everything ready, go to http://localhost:3000/ and have fun.
 
 ---
 
