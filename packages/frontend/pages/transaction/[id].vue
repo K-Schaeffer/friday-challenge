@@ -30,7 +30,7 @@
           @click="changeCurrentCategory"
         >
           <option
-            v-for="category in categories"
+            v-for="category in currentCategories"
             :key="category.id"
             :value="category.id"
           >
@@ -128,6 +128,10 @@ onMounted(() => {
 
 const canUpdateColor = computed(() => {
   return !selectedCategory.id.length;
+});
+
+const currentCategories = computed(() => {
+  return categories.filter((category) => category.id !== selectedCategory.id);
 });
 
 const updateSelectedCategory = (event) => {
