@@ -15,6 +15,7 @@
         :head-cells="headCells"
         :body-rows="currentBodyRows"
         @sort="handleSort"
+        @click:row="(id) => $router.push(`transaction/${id}`)"
       />
     </div>
     <span
@@ -38,7 +39,6 @@ const headCells = reactive([
   { text: "Date", id: "date" },
   { text: "Amount", id: "amount", isSortable: true, isSorting: "" },
 ]);
-
 const bodyRows = reactive([]);
 
 const currentSearch = ref("");
@@ -66,7 +66,7 @@ const currentBodyRows = computed(() => {
   const headCellSorting = headCells.find((cell) => cell.isSortable);
   let sortedBodyRows;
 
-  if (headCellSorting.isSorting !== "") {
+  if (headCellSorting.isSorting) {
     sortedBodyRows = bodyRows;
 
     headCellSorting.isSorting === "DESC"
@@ -78,7 +78,7 @@ const currentBodyRows = computed(() => {
         );
   }
 
-  if (currentSearch.value.length === "") {
+  if (!currentSearch.value.length) {
     return sortedBodyRows || bodyRows;
   }
 
@@ -105,7 +105,7 @@ const handleScroll = (event) => {
   if (
     scrollTop < scrollTopMax ||
     currentSearch.value.length ||
-    headCells.find((cell) => cell.isSortable && cell.isSorting !== "")
+    headCells.find((cell) => cell.isSortable && cell.isSorting)
   ) {
     return;
   }
@@ -116,12 +116,11 @@ const handleScroll = (event) => {
 const handleSort = (cellId) => {
   const selectedCell = headCells.find((cell) => cell.id === cellId);
 
-  selectedCell.isSorting =
-    selectedCell.isSorting === ""
-      ? "DESC"
-      : selectedCell.isSorting === "ASC"
-      ? "DESC"
-      : "ASC";
+  selectedCell.isSorting = !selectedCell.isSorting
+    ? "DESC"
+    : selectedCell.isSorting === "ASC"
+    ? "DESC"
+    : "ASC";
 
   tableWrapper.value.scroll({ top: "100%" });
 };
