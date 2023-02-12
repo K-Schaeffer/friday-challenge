@@ -96,13 +96,13 @@ cd friday-challenge/
 #### Copy local enviroment files
 
 ```sh
-# Backend
-cd packages/backend && cp .env.local .env
+# friday-challenge/backend
+cp .env.local .env
 ```
 
 ```sh
-# Frontend
-cd ../frontend && cp .env.local .env
+# # friday-challenge/frontend
+cp .env.local .env
 ```
 
 #### Install dependencies
