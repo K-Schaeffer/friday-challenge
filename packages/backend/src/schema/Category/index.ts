@@ -21,7 +21,7 @@ export const typeDefs = `#graphql
 
   type Mutation {
     addCategory(categoryContent: CategoryContent!): Category!
-    editCategory(id: String!, categorycontent: CategoryContent!): Category!
+    editCategory(id: String!, categoryContent: CategoryContent!): Category!
     deleteCategory(id: String!): Category
   }
 `;
@@ -43,26 +43,28 @@ export const resolvers = {
         data: { ...categoryContent },
       });
     },
-    editCategory: (_, { id, categorycontent }) => {
+    editCategory: (_, { id, categoryContent }) => {
       return prisma.category.update({
         where: { id },
-        data: { id, ...categorycontent }
-      })
+        data: { id, ...categoryContent },
+      });
     },
     deleteCategory: async (_, { id }) => {
       const transactionsThatUseThisCategory = await prisma.transaction.count({
-        where: { categoryId: id }
+        where: { categoryId: id },
       });
 
-      // As I decided that all transactions must have a category, I need to check this here 
+      // As I decided that all transactions must have a category, I need to check this here
       // (https://github.com/K-Schaeffer/friday-challenge/blob/main/packages/backend/prisma/seeds/Transaction/index.ts#L25)
       if (transactionsThatUseThisCategory) {
-        throw new Error('Unable to delete category attached to one or more transactions')
+        throw new Error(
+          "Unable to delete category attached to one or more transactions"
+        );
       }
 
       return prisma.category.delete({
-        where: { id }
-      })
-    }
+        where: { id },
+      });
+    },
   },
 };

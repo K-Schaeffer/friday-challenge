@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Account {
-  id          String        @id @default(cuid())
+  id          String        @id @default(uuid())
   name        String
   bank        String
 
@@ -19,8 +19,8 @@ model Account {
 }
 
 model Category {
-  id          String        @id @default(cuid())
-  name        String        @unique
+  id          String        @id @default(uuid())
+  name        String
   color       String?
 
   createdAt   DateTime      @default(now())
@@ -30,7 +30,7 @@ model Category {
 }
 
 model Transaction {
-  id         String   @id @default(cuid())
+  id         String   @id @default(uuid())
 
   accountId  String
   account    Account  @relation(fields: [accountId], references: [id])
