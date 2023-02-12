@@ -47,6 +47,7 @@ const tableWrapper = ref(null);
 
 const fetchTransactions = (offset = 0) => {
   // TODO: Fix nuxt apollo lint
+  // eslint-disable-next-line no-undef
   const query = useQuery(transactionsGql, {
     limit: 50,
     offset,
