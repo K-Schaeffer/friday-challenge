@@ -16,7 +16,7 @@
 <!-- Index session-->
 <p align="center">
  <a href="#-overview">Overview</a> • 
- <a href="#-functionalities">Functionalities</a> • 
+ <a href="#%EF%B8%8F-functionalities">Functionalities</a> • 
  <a href="#-layout">Layout</a> • 
  <a href="#-running-the-project">Running it</a> • 
  <a href="#-technologies">Technologies</a>
@@ -100,8 +100,8 @@ yarn install
 
 Follow the instructions of each project in the following order:
 
-1. [Backend](/app/views)
-2. [Frontend](/app/public/assets/css/dropbox-clone.css)
+1. [Backend](https://github.com/K-Schaeffer/friday-challenge/tree/main/packages/backend#readme)
+2. [Frontend](https://github.com/K-Schaeffer/friday-challenge/tree/main/packages/frontend#readme)
 
 With those steps you'll have a containerized PostgreSQL container running, an API running on port **4000** and the front-end application running on port **3000**.
 
