@@ -18,8 +18,7 @@
  <a href="#-overview">Overview</a> • 
  <a href="#%EF%B8%8F-functionalities">Functionalities</a> • 
  <a href="#-layout">Layout</a> • 
- <a href="#-local-setup">Local Setup</a> • 
- <a href="#-technologies">Technologies</a>
+ <a href="#-local-setup">Local Setup</a>
 </p>
 
 <!-- Overview session-->
@@ -80,7 +79,7 @@ This monorepo contains a CRUD fullstack aplication developed in response to the 
 
 ### 🎲 Running
 
-If that's not the first time you're running, jump to <a href="####-quick-start">quick start</a>.
+If that's not the first time you're running, jump to <a href="#%EF%B8%8F-quick-start">quick start</a>.
 
 #### Clone this repository
 
@@ -106,14 +105,10 @@ cd packages/backend && cp .env.local .env
 cd ../frontend && cp .env.local .env
 ```
 
-```sh
-# Go back to root directory
-cd ../../
-```
-
 #### Install dependencies
 
 ```sh
+# friday-challenge/
 yarn install
 ```
 
@@ -124,6 +119,7 @@ Follow these [instructions](https://github.com/K-Schaeffer/friday-challenge/tree
 #### Start Application
 
 ```sh
+# friday-challenge/
 yarn start:frontend
 ```
 

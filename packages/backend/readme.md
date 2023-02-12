@@ -44,11 +44,25 @@ docker compose up -d
 yarn prepare
 ```
 
+Or
+
+```sh
+# friday-challenge/
+yarn prepare:backend
+```
+
 #### Start API
 
 ```sh
 # friday-challenge/packages/backend
 yarn start
+```
+
+Or
+
+```sh
+# friday-challenge/
+yarn start:backend
 ```
 
 Congrats! With that you already have the API running on port **4000** ready to receive requests.
