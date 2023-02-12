@@ -28,23 +28,23 @@ Or
 yarn start:backend
 ```
 
-#### 🎲 Running
+### 🎲 Running
 
-##### Initiate PostgreSQL container
+#### Initiate PostgreSQL container
 
 ```sh
 # friday-challenge/packages/backend
 docker compose up -d
 ```
 
-##### Prepare the database (migration and seed)
+#### Prepare the database (migration and seed)
 
 ```sh
 # friday-challenge/packages/backend
 yarn prepare
 ```
 
-##### Start API
+#### Start API
 
 ```sh
 # friday-challenge/packages/backend
@@ -53,9 +53,9 @@ yarn start
 
 Congrats! With that you already have the API running on port **4000** ready to receive requests.
 
-#### 💻 Testing
+### 💻 Testing
 
-##### Database
+#### Database
 
 You can check if the database is properly populated by running:
 
@@ -73,6 +73,6 @@ yarn preview:database
 
 This will open Prisma Studio on http://localhost:5555, in which you can see all models and data available in the database.
 
-##### API
+#### API
 
 Go to [Apollo Sandbox](https://studio.apollographql.com/sandbox/explorer) and run queries/mutations from the API.

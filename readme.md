@@ -78,23 +78,23 @@ This monorepo contains a CRUD fullstack aplication developed in response to the 
 - Docker Engine 23.x
 - Docker Compose 2.x
 
-#### 🎲 Running
+### 🎲 Running
 
 If that's not the first time you're running, jump to <a href="####-quick-start">quick start</a>.
 
-##### Clone this repository
+#### Clone this repository
 
 ```sh
 git clone https://github.com/K-Schaeffer/friday-challenge.git
 ```
 
-##### Go to clone directory
+#### Go to clone directory
 
 ```sh
 cd friday-challenge/
 ```
 
-##### Copy local enviroment files
+#### Copy local enviroment files
 
 ```sh
 # Backend
@@ -111,31 +111,31 @@ cd ../frontend && cp .env.local .env
 cd ../../
 ```
 
-##### Install dependencies
+#### Install dependencies
 
 ```sh
 yarn install
 ```
 
-##### Start API
+#### Start API
 
 Follow these [instructions](https://github.com/K-Schaeffer/friday-challenge/tree/main/packages/backend#readme)
 
-##### Start Application
+#### Start Application
 
 ```sh
 yarn start:frontend
 ```
 
-With those steps you'll have a containerized PostgreSQL container running, an API running on port **4000** and the front-end application running on port **3000**.
+Congrats, now you have a containerized PostgreSQL container running, an API running on port **4000** and the front-end application running on port **3000**.
 
 Open http://localhost:3000 and have fun :)
 
 ---
 
-#### ⚡️ Quick start
+### ⚡️ Quick start
 
-##### Start API
+#### Start API
 
 Open a new terminal and run:
 
@@ -144,7 +144,7 @@ Open a new terminal and run:
 yarn start:backend
 ```
 
-##### Start Application
+#### Start Application
 
 Open a new terminal and run:
 
