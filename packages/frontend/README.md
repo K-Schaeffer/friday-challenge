@@ -1,16 +1,28 @@
-# Frontend
+# Friday-challenge-backend
 
-This is the frontend project, it consists of a Nuxt 3 app.
+<!--Overvoew session-->
 
-## Running (WIP)
+## 👀 Overview
 
-Start the development server on http://localhost:3000
+This package holds the Nuxt 3 application.
+
+---
+
+<!--Running session-->
+
+## 🚀 Local Setup
+
+Make sure you fulfill the [requirements](https://github.com/K-Schaeffer/friday-challenge#requirements).
+
+#### 🎲 Developmnt
+
+Start the development server
 
 ```bash
 yarn dev
 ```
 
-## Production
+##### ⚡ Production
 
 Build the application for production:
 

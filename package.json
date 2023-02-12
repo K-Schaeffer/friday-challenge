@@ -14,6 +14,8 @@
     "prepare": "husky install",
     "prepare:backend": "lerna run prepare",
     "start:backend": "lerna run start",
+    "start:frontend": "lerna run build && lerna run preview --scope=frontend",
+    "preview:database": "lerna run preview --scope=backend",
     "preview": "nx graph"
   },
   "config": {
