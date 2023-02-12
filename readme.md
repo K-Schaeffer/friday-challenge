@@ -105,30 +105,9 @@ Follow the instructions of each project in the following order:
 
 With those steps you'll have a containerized PostgreSQL container running, an API running on port **4000** and the front-end application running on port **3000**.
 
-Open http://localhost:3000.
+Open http://localhost:3000
 
 ---
-
-<!--Tecnologies session-->
-
-## 🛠 Technologies
-
-The following tools where used in the project development:
-
-#### **Front-end** ([HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML) + [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS) + [JS](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)) + [Bower](https://bower.io)
-
-#### **Back-end** ([NodeJS](https://nodejs.org/en/))
-
-- **[Express](https://expressjs.com/)**
-- **[Formidable](https://www.npmjs.com/package/formidable)**
-
-> See the [package.json](/app/package.json) file
-
-#### **Useful tools**
-
-- Editor: **[Visual Studio Code](https://code.visualstudio.com/)**
-- Markdown: **[EmojiCopy](https://www.emojicopy.com)**, **[Markdown Emoji](https://gist.github.com/rxaviers/7360908)**
-- Badges: **[Shields.io](https://shields.io)**
 
 <!--Bottom session-->
 <h4 align=center>Made with ❤️ by Kauan Schaeffer 👋 <a href="https://www.linkedin.com/in/k-schaeffer/">Contact me :)</a></a></h4>
