@@ -1,0 +1,5 @@
+mutation AddCategory($categoryContent: CategoryContent!) {
+  addCategory(categoryContent: $categoryContent) {
+    id
+  }
+}
