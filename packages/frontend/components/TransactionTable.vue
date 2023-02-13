@@ -1,5 +1,5 @@
 <template>
-  <table class="table-auto bg-transparent w-full border-collapse select-none">
+  <BaseTable>
     <thead class="sticky top-0 bg-white">
       <tr>
         <th
@@ -14,12 +14,12 @@
           <span class="flex">
             {{ cell.text }}
             <span v-show="cell.isSortable" class="flex">
-              <icon-arrow-up-outlined
+              <IconOutlinedArrowUp
                 :class="{ 'stroke-zinc-600': cell.isSorting === 'DESC' }"
                 width="14"
                 class="stroke-zinc-400 stroke-2 ml-2"
               />
-              <icon-arrow-down-outlined
+              <IconOutlinedArrowDown
                 :class="{ 'stroke-zinc-600': cell.isSorting === 'ASC' }"
                 width="14"
                 class="stroke-zinc-400 stroke-2"
@@ -37,25 +37,25 @@
         class="hover:bg-slate-50 hover:cursor-pointer"
         @click="() => emit('click:row', row.id)"
       >
-        <my-transaction-table-body-cell :text="row.account.name" />
-        <my-transaction-table-body-cell :text="row.account.bank" />
-        <my-transaction-table-body-cell :text="row.reference" />
-        <my-transaction-table-body-cell
+        <TransactionTableBodyCell :text="row.account.name" />
+        <TransactionTableBodyCell :text="row.account.bank" />
+        <TransactionTableBodyCell :text="row.reference" />
+        <TransactionTableBodyCell
           :text="row.category.name"
           :color="row.category.color"
         />
-        <my-transaction-table-body-cell
+        <TransactionTableBodyCell
           :text="new Date(row.date).toLocaleDateString('us-US')"
           class="w-0 text-center"
         />
-        <my-transaction-table-body-cell
+        <TransactionTableBodyCell
           :text="new Intl.NumberFormat('us-US', {}).format(row.amount)"
           :hint="row.currency"
           class="w-0 text-right"
         />
       </tr>
     </tbody>
-  </table>
+  </BaseTable>
 </template>
 
 <script setup>

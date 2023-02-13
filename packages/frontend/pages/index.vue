@@ -1,23 +1,18 @@
 <template>
   <div :class="{ 'cursor-wait animate-pulse opacity-10': isLoading }">
     <h1 class="text-zinc-900 font-bold pb-5">Transactions</h1>
-    <my-transaction-search-input
+    <TransactionSearchInput
       v-model="currentSearch"
       class="pb-3"
       :is-disabled="isLoading"
     />
-    <div
-      ref="tableWrapper"
-      class="block max-h-[75vh] overflow-hidden overflow-y-scroll overflow-x-scroll"
+    <TransactionTable
+      :head-cells="headCells"
+      :body-rows="currentBodyRows"
+      @sort="handleSort"
+      @click:row="(id) => $router.push(`transaction/${id}`)"
       @scroll="handleScroll"
-    >
-      <my-transaction-table
-        :head-cells="headCells"
-        :body-rows="currentBodyRows"
-        @sort="handleSort"
-        @click:row="(id) => $router.push(`transaction/${id}`)"
-      />
-    </div>
+    />
     <span
       v-show="!isLoading"
       class="mt-2 flex justify-end items-end text-xs text-zinc-600 text-right"
@@ -43,7 +38,6 @@ const bodyRows = reactive([]);
 
 const currentSearch = ref("");
 const isLoading = ref(true);
-const tableWrapper = ref(null);
 
 const fetchTransactions = (offset = 0) => {
   // TODO: Fix nuxt apollo lint
@@ -122,7 +116,5 @@ const handleSort = (cellId) => {
     : selectedCell.isSorting === "ASC"
     ? "DESC"
     : "ASC";
-
-  tableWrapper.value.scroll({ top: "100%" });
 };
 </script>

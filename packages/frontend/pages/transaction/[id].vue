@@ -4,59 +4,17 @@
       Transaction Details - Change Category
     </h1>
     <div class="pb-6 px-6 grid grid-cols-2 gap-x-8">
-      <div>
-        <label
-          for="name"
-          class="font-semibold text-sm text-zinc-400 block pb-1"
-        >
-          Name
-        </label>
-        <input
-          :value="selectedCategory.name"
-          :disabled="isLoading"
-          :class="{
-            'cursor-not-allowed bg-zinc-200': isLoading,
-          }"
-          tabindex="1"
-          list="categories"
-          type="text"
-          name="name"
-          class="p-1 px-2 min-w-full text-md border border-zinc-400 rounded hover:border-zinc-900 focus:border-zinc-900 text--600 focus:outline-none"
-          @input="updateSelectedCategory"
-        />
-        <datalist
-          id="categories"
-          class="w-full h-full"
-          @click="changeCurrentCategory"
-        >
-          <option
-            v-for="category in currentCategories"
-            :key="category.id"
-            :value="category.id"
-          >
-            {{ category.name }}
-          </option>
-        </datalist>
-      </div>
-      <div>
-        <label
-          for="color"
-          class="font-semibold text-sm text-zinc-400 block pb-1"
-        >
-          Color
-        </label>
-        <input
-          v-model="selectedCategory.color"
-          :disabled="!canUpdateColor"
-          :class="{
-            'cursor-not-allowed bg-zinc-200': !canUpdateColor,
-          }"
-          tabindex="2"
-          type="color"
-          name="color"
-          class="p-1 cursor-pointer border border-zinc-400 rounded hover:border-zinc-900 focus:border-zinc-900 text--600 disabled:hover:border-zinc-400 disabled:select-none focus:outline-none"
-        />
-      </div>
+      <CategoryAutocompleteInput
+        v-model="selectedCategory.name"
+        :categories="currentCategories"
+        :is-disabled="isLoading"
+        @input="updateSelectedCategory"
+      />
+      <CategoryColorInput
+        v-model="selectedCategory.color"
+        :is-disabled="isLoading || !canUpdateColor"
+        class="max-w-[100px]"
+      />
     </div>
     <div class="flex">
       <NuxtLink
