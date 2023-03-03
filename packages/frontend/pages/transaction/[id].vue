@@ -8,7 +8,7 @@
         v-model="selectedCategory.name"
         :categories="currentCategories"
         :is-disabled="isLoading"
-        @input="updateSelectedCategory"
+        @update:model-value="updateSelectedCategory"
       />
       <CategoryColorInput
         v-model="selectedCategory.color"
@@ -92,8 +92,7 @@ const currentCategories = computed(() => {
   return categories.filter((category) => category.id !== selectedCategory.id);
 });
 
-const updateSelectedCategory = (event) => {
-  const { value } = event.target;
+const updateSelectedCategory = (value) => {
   hasEdited.value = true;
 
   const selectedCategoryData = categories.find(
